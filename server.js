@@ -1,11 +1,18 @@
 const express = require('express')
+const cors = require("cors")
+const posts = require("./data")
 require('dotenv').config()
 
 const app = express();
 
-
+app.use(cors());
 app.get("/", function (req,res){
     res.send("Welcome to Luan Nguyen backend")
+})
+app.get('/posts', (req, res) => {
+    const {s} = req.query;
+    let searchPosts = posts.filter((item) => item.title.includes(s))
+    res.json(searchPosts)    
 })
 app.get("/test", (req,res) => {
     res.json({
