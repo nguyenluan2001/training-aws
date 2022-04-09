@@ -14,6 +14,11 @@ app.get('/posts', (req, res) => {
     let searchPosts = posts.filter((item) => item.title.includes(s))
     res.json(searchPosts)    
 })
+app.get("/posts/:id", (req, res) => {
+    const {id} = req.params;
+    let post = posts.find((item) => parseInt(item.id) === parseInt(id))
+    res.json(post)
+})
 app.get("/test", (req,res) => {
     res.json({
         id: 1,

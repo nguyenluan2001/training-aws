@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import { axiosInstance } from '../utils/axios';
-
+import Link from "next/link"
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [posts, setPosts] = useState(null);
@@ -12,16 +12,16 @@ export default function Home() {
   }
   const handleSearch = async () => {
     try {
-      let fetchedPosts = await axiosInstance.get(`/posts`,{
-        params:{
+      let fetchedPosts = await axiosInstance.get(`/posts`, {
+        params: {
           s: keyword
         }
       })
-  console.log('fetchedPosts', fetchedPosts)
+      console.log('fetchedPosts', fetchedPosts)
 
-      if(fetchedPosts) setPosts(fetchedPosts.data)
+      if (fetchedPosts) setPosts(fetchedPosts.data)
       else setPosts([])
-    } catch(error) {
+    } catch (error) {
       console.log("error", error.message)
     }
   }
@@ -45,7 +45,11 @@ export default function Home() {
           {posts &&
             posts?.map((post) => (
               <li>
-                {post?.title}
+                <Link href={`posts/${post?.id}`}>
+                  <a>
+                    {post?.title}
+                  </a>
+                </Link>
               </li>
             ))
           }
