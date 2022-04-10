@@ -35,7 +35,7 @@ export default function Home() {
 
       <main>
         <h1>
-          Welcome to Luan Nguyen Website
+          Welcome to Luan Nguyen Website - Feature 1
         </h1>
         <div>
           <input type="text" onChange={(e) => handleChangeKeyword(e)}></input>
