@@ -14,3 +14,4 @@ jobs:
           host: ${{ secrets.SERVER_DEV_IP }}
           user: ${{ secrets.SERVER_DEV_USER }}
           key: ${{ secrets.SSH_DEV_PRIVATE_KEY}}
+          args: "-tt -vvv"
