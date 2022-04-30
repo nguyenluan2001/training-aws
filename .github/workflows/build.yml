@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: actions/checkout@v2
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
       - name: "Build frontend"
         run: "cd ~/client && npm run build"
