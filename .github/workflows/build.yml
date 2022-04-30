@@ -1,6 +1,6 @@
 name: deploy to aws
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
