@@ -6,6 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
       - name: "Build frontend"
-        run: "ls -a"
+      - name: ls -a via ssh
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /training-aws
+            ls -a
+          host: ${{ secrets.SERVER_DEV_IP }}
+          user: root
+          key: ${{ secrets.SSH_DEV_PRIVATE_KEY}}
