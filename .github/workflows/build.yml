@@ -1,17 +1,23 @@
 name: deploy to aws
 on:
+  pull_request: 
+    branches: [main]
   workflow_dispatch:
 jobs:
-  build:
+  sonarcloud:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: ls -a via ssh
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /training-aws
-            ls -a
-          host: ${{ secrets.SERVER_DEV_IP }}
-          user: ${{ secrets.SERVER_DEV_USER }}
-          key: ${{ secrets.SSH_DEV_PRIVATE_KEY}}
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+      with:
+        projectBaseDir: nguyenluan2001/training-aws
+        args: >
+          -Dsonar.organization=nguyenluan2001
+          -Dsonar.projectKey=nguyenluan2001_training-aws
