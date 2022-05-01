@@ -16,3 +16,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+      with:
+        projectBaseDir: training-aws
+        args: >
+          -Dsonar.organization=nguyenluan2001
+          -Dsonar.projectKey=nguyenluan2001_training-aws
