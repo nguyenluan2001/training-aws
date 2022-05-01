@@ -7,6 +7,7 @@ import Link from "next/link"
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [posts, setPosts] = useState(null);
+  let params = 10;
   const handleChangeKeyword = (e) => {
     setKeyword(e.target.value)
   }
