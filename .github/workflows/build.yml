@@ -13,5 +13,5 @@ jobs:
             cd /training-aws
             ls -a
           host: ${{ secrets.SERVER_DEV_IP }}
-          user: root
+          user: ${{ secrets.SERVER_DEV_USER }}
           key: ${{ secrets.SSH_DEV_PRIVATE_KEY}}
