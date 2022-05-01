@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: "Build frontend"
       - name: ls -a via ssh
         uses: fifsky/ssh-action@master
         with:
